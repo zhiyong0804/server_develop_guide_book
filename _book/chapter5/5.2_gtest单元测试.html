@@ -53,7 +53,7 @@
         data-chapter-title="gtest单元测试"
         data-filepath="chapter5/5.2_gtest单元测试.md"
         data-basepath=".."
-        data-revision="Fri Oct 12 2018 12:01:16 GMT+0800 (CST)"
+        data-revision="Sat Oct 13 2018 11:32:06 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -721,6 +721,8 @@
 <ul>
 <li><a href="#1">1.gtest&#x7684;&#x4F18;&#x70B9;</a></li>
 <li><a href="#2">2.&#x642D;&#x5EFA;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;</a></li>
+<li><a href="#3">3.&#x6D4B;&#x8BD5;Demo</a></li>
+<li><a href="#4">4.&#x642D;&#x5EFA;&#x6D4B;&#x8BD5;&#x5DE5;&#x7A0B;</a></li>
 </ul>
 <h2 id="1">1.gtest&#x7684;&#x4F18;&#x70B9;</h2>
 
@@ -734,8 +736,22 @@
 <li>&#x6D4B;&#x8BD5;&#x5E94;&#x8BE5;&#x591F;&#x5FEB;&#x3002;GTest&#x5728;&#x6EE1;&#x8DB3;&#x6D4B;&#x8BD5;&#x72EC;&#x7ACB;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x5141;&#x8BB8;&#x4F60;&#x590D;&#x7528;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x4EEC;&#x53EA;&#x9700;&#x521B;&#x5EFA;&#x4E00;&#x6B21;&#x3002;</li>
 <li>GTest&#x91C7;&#x7528;&#x7684;&#x662F;xUnit&#x67B6;&#x6784;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x548C;JUnit&#x3001;PyUnit&#x5F88;&#x7C7B;&#x4F3C;&#xFF0C;&#x6240;&#x4EE5;&#x4E0A;&#x624B;&#x975E;&#x5E38;&#x5FEB;&#x3002;</li>
 </ul>
-<p></p><h2 id="2">2.&#x642D;&#x5EFA;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;</h2>
-gtest&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/google/googletest" target="_blank">https://github.com/google/googletest</a><br>&#x4E0B;&#x8F7D;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;git clone <a href="https://github.com/google/googletest" target="_blank">https://github.com/google/googletest</a><p></p>
+<h2 id="2">2.&#x642D;&#x5EFA;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;</h2>
+gtest&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;[https://github.com/google/googletest](https://github.com/google/googletest)  
+&#x4E0B;&#x8F7D;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;git clone https://github.com/google/googletest.git
+&#x5B89;&#x88C5;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;  
+```
+$ cd googletest
+$ cmake .
+$ make
+```  
+&#x7136;&#x540E;&#x5728;lib&#x76EE;&#x5F55;&#x4E0B;&#x4F1A;&#x751F;&#x6210;&#xFF1A;libgmock.a  libgmock_main.a  libgtest.a  libgtest_main.a  
+&#x6700;&#x540E;&#x6211;&#x4EEC;&#x518D;`sudo make install`&#x3002;
+
+<h2 id="3">3.&#x6D4B;&#x8BD5;Demo</h2>
+
+
+
 
                     
                     </section>
@@ -779,7 +795,7 @@ gtest&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/google/
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"theme-default":{"showLevel":false},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>
