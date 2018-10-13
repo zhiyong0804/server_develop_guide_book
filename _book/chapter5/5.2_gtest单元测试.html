@@ -53,7 +53,7 @@
         data-chapter-title="gtest单元测试"
         data-filepath="chapter5/5.2_gtest单元测试.md"
         data-basepath=".."
-        data-revision="Sat Oct 13 2018 11:32:06 GMT+0800 (CST)"
+        data-revision="Sat Oct 13 2018 15:08:45 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -736,22 +736,125 @@
 <li>&#x6D4B;&#x8BD5;&#x5E94;&#x8BE5;&#x591F;&#x5FEB;&#x3002;GTest&#x5728;&#x6EE1;&#x8DB3;&#x6D4B;&#x8BD5;&#x72EC;&#x7ACB;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x5141;&#x8BB8;&#x4F60;&#x590D;&#x7528;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x4EEC;&#x53EA;&#x9700;&#x521B;&#x5EFA;&#x4E00;&#x6B21;&#x3002;</li>
 <li>GTest&#x91C7;&#x7528;&#x7684;&#x662F;xUnit&#x67B6;&#x6784;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x548C;JUnit&#x3001;PyUnit&#x5F88;&#x7C7B;&#x4F3C;&#xFF0C;&#x6240;&#x4EE5;&#x4E0A;&#x624B;&#x975E;&#x5E38;&#x5FEB;&#x3002;</li>
 </ul>
-<h2 id="2">2.&#x642D;&#x5EFA;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;</h2>
-gtest&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;[https://github.com/google/googletest](https://github.com/google/googletest)  
-&#x4E0B;&#x8F7D;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;git clone https://github.com/google/googletest.git
-&#x5B89;&#x88C5;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;  
-```
-$ cd googletest
+<p></p><h2 id="2">2.&#x642D;&#x5EFA;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;</h2>
+gtest&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/google/googletest" target="_blank">https://github.com/google/googletest</a>    <p></p>
+<p>&#x4E0B;&#x8F7D;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;git clone <a href="https://github.com/google/googletest.git" target="_blank">https://github.com/google/googletest.git</a><br>&#x5B89;&#x88C5;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;  </p>
+<pre><code>$ cd googletest
 $ cmake .
 $ make
-```  
-&#x7136;&#x540E;&#x5728;lib&#x76EE;&#x5F55;&#x4E0B;&#x4F1A;&#x751F;&#x6210;&#xFF1A;libgmock.a  libgmock_main.a  libgtest.a  libgtest_main.a  
-&#x6700;&#x540E;&#x6211;&#x4EEC;&#x518D;`sudo make install`&#x3002;
+</code></pre><p>&#x7136;&#x540E;&#x5728;lib&#x76EE;&#x5F55;&#x4E0B;&#x4F1A;&#x751F;&#x6210;&#xFF1A;libgmock.a  libgmock_main.a  libgtest.a  libgtest_main.a<br>&#x6700;&#x540E;&#x6211;&#x4EEC;&#x518D;<code>sudo make install</code>&#x3002;</p>
+<p></p><h2 id="3">3.&#x6D4B;&#x8BD5;Demo</h2><p></p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x7684;&#x5B9E;&#x73B0;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;  </li>
+</ul>
+<pre><code>#include &quot;sample1.h&quot;
 
-<h2 id="3">3.&#x6D4B;&#x8BD5;Demo</h2>
+// Returns n! (the factorial of n).  For negative n, n! is defined to be 1.
+int Factorial(int n) {
+  int result = 1;
+  for (int i = 1; i &lt;= n; i++) {
+    result *= i;
+  }
 
+  return result;
+}
 
+// Returns true iff n is a prime number.
+bool IsPrime(int n) {
+  // Trivial case 1: small numbers
+  if (n &lt;= 1) return false;
 
+  // Trivial case 2: even numbers
+  if (n % 2 == 0) return n == 2;
+
+  // Now, we have that n is odd and n &gt;= 3.
+
+  // Try to divide n by every odd number i, starting from 3
+  for (int i = 3; ; i += 2) {
+    // We only have to try i up to the square root of n
+    if (i &gt; n/i) break;
+
+    // Now, we have i &lt;= n/i &lt; n.
+    // If n is divisible by i, n is not prime.
+    if (n % i == 0) return false;
+  }
+
+  // n has no integer factor in the range (1, n), and thus is prime.
+  return true;
+}
+</code></pre><p>&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x5728;sample1.cc&#x6587;&#x4EF6;&#x91CC;&#xFF0C;&#x51FD;&#x6570;&#x7533;&#x660E;&#x5728;sample1.h&#x91CC;&#xFF1A;</p>
+<pre><code>#ifndef GTEST_SAMPLES_SAMPLE1_H_
+#define GTEST_SAMPLES_SAMPLE1_H_
+
+// Returns n! (the factorial of n).  For negative n, n! is defined to be 1.
+int Factorial(int n);
+
+// Returns true iff n is a prime number.
+bool IsPrime(int n);
+
+#endif
+</code></pre><ul>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5C31;&#x662F;&#x8981;&#x6D4B;&#x8BD5;Factorial&#x548C;IsPrime&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x597D;&#x4E86;&#x5F00;&#x59CB;&#x5199;&#x6211;&#x4EEC;&#x7684;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x628A;&#x3002;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x547D;&#x540D;&#x4E3A;sample_unittest.cc&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;  </li>
+</ul>
+<pre><code>#include &lt;limits.h&gt;
+#include &quot;sample1.h&quot;
+#include &quot;gtest/gtest.h&quot;
+namespace {
+
+TEST(FactorialTest, Negative) {
+    // This test is named &quot;Negative&quot;, and belongs to the &quot;FactorialTest&quot;
+    // test case.
+    EXPECT_EQ(1, Factorial(-5));
+    EXPECT_EQ(1, Factorial(-1));
+    EXPECT_GT(Factorial(-10), 0);
+}
+
+TEST(FactorialTest, Zero) {
+    EXPECT_EQ(1, Factorial(0));
+}
+
+TEST(FactorialTest, Positive) {
+    EXPECT_EQ(1, Factorial(1));
+    EXPECT_EQ(2, Factorial(2));
+    EXPECT_EQ(6, Factorial(3));
+    EXPECT_EQ(40320, Factorial(8));
+}
+
+// Tests IsPrime()
+TEST(IsPrimeTest, Negative) {
+  EXPECT_FALSE(IsPrime(-1));
+  EXPECT_FALSE(IsPrime(-2));
+  EXPECT_FALSE(IsPrime(INT_MIN));
+}
+
+TEST(IsPrimeTest, Trivial) {
+  EXPECT_FALSE(IsPrime(0));
+  EXPECT_FALSE(IsPrime(1));
+  EXPECT_TRUE(IsPrime(2));
+  EXPECT_TRUE(IsPrime(3));
+}
+
+TEST(IsPrimeTest, Positive) {
+  EXPECT_FALSE(IsPrime(4));
+  EXPECT_TRUE(IsPrime(5));
+  EXPECT_FALSE(IsPrime(6));
+  EXPECT_TRUE(IsPrime(23));
+}
+}  // namespace
+</code></pre><p>TEST&#x662F;gtest&#x7684;&#x6D4B;&#x8BD5;&#x5B8F;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x5FC5;&#x987B;&#x6309;&#x7167;&#x8FD9;&#x6837;&#x683C;&#x5F0F;&#x5199;&#xFF0C;isPrimeTest&#x662F;&#x6D4B;&#x8BD5;&#x5957;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x5957;&#x4E0B;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x90A3;&#x4E48;Positive&#x3001;Trivial&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x7684;&#x540D;&#x79F0;&#xFF0C;EXPECT_EQ&#x3001;EXPECT_FALSE&#x548C;EXPECT_TRUE&#x7B49;&#x7B49;&#xFF0C;&#x90FD;&#x662F;gtest&#x63D0;&#x4F9B;&#x7684;&#x6D4B;&#x8BD5;&#x65AD;&#x8A00;&#xFF0C;&#x6BD4;&#x5982;<code>EXPECT_EQ(1, Factorial(1));</code>&#x5C31;&#x662F;&#x8868;&#x793A;Factorial(1)&#x548C;1&#x662F;&#x4E0D;&#x662F;&#x76F8;&#x7B49;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5219;&#x8868;&#x793A;EXPECT_EQ&#x4F1A;&#x8FD4;&#x56DE;&#x6210;&#x529F;&#xFF0C;&#x5426;&#x5219;&#x5931;&#x8D25;&#xFF0C;&#x4E5F;&#x5373;&#x6211;&#x4EEC;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x4F1A;&#x5931;&#x8D25;&#x6216;&#x8005;&#x6210;&#x529F;&#x3002;</p>
+<ul>
+<li>&#x7B2C;&#x4E09;&#x6B65;&#xFF0C;&#x5B9E;&#x73B0;&#x6D4B;&#x8BD5;&#x7684;main&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x5199;main&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x5C31;&#x9700;&#x8981;&#x8FDE;&#x63A5;gtest_main.a&#x8FD9;&#x4E2A;&#x5E93;&#x3002;&#x6BD4;&#x5982;&#x8FD9;&#x6837;&#x5B50;&#x7F16;&#x8BD1;&#xFF1A;<pre><code>g++ sample1.cc sample1_unittest.cc -lgtest -std=c++11 -lgtest_main -lpthread -o test1
+</code></pre>&#x7136;&#x540E;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;test&#xFF1A;<pre><code>$ ./test
+</code></pre>&#x4F1A;&#x6709;&#x4EE5;&#x4E0B;&#x8F93;&#x51FA;&#xFF1A;
+<img src="5.2_1.png" alt="&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;">
+&#x6216;&#x8005;&#x662F;&#x81EA;&#x5DF1;&#x5199;&#x4E00;&#x4E2A;main&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;<pre><code>#include &lt;gtest/gtest.h&gt;
+int main(int argc, char** argv){
+  testing::InitGoogleTest(&amp;argc, argv);
+  return RUN_ALL_TESTS();
+}
+</code></pre>&#x7136;&#x540E;&#x7F16;&#x8BD1;&#x6210;&#x6211;&#x4EEC;&#x7684;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x5C31;OK&#x4E86;&#xFF0C;&#x4E5F;&#x8BB8;&#x5F88;&#x591A;&#x540C;&#x5B66;&#x4F1A;&#x5F88;&#x60CA;&#x8BB6;&#x4E3A;&#x4EC0;&#x4E48;RUN_ALL_TESTS&#x51FD;&#x6570;&#x540E;&#x4F1A;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x5C31;&#x80FD;&#x81EA;&#x52A8;&#x8FD0;&#x884C;&#x4E86;&#x5462;&#xFF1F;
+&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9898;&#x5916;&#x8BDD;&#xFF0C;&#x5F53;&#x7136;&#x6211;&#x89C9;&#x5F97;&#x8FD9;&#x4E5F;&#x662F;gtest&#x7684;&#x4E00;&#x5927;&#x4EAE;&#x70B9;&#x3002;&#x6709;&#x5174;&#x8DA3;&#x4E0D;&#xFF1F;</li>
+</ul>
 
                     
                     </section>
