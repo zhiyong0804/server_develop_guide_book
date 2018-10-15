@@ -8,6 +8,7 @@
     * [安装和配置linux系统](chapter2/2.1_安装和配置linux系统.md)
     * [linux命令](chapter2/2.2_linux命令.md)
     * [安装开发工具](chapter2/2.3_安装开发工具.md)
+    * [搭建开发环境](chapter2/2.4_搭建开发环境.md)
 * [项目文档](chapter3/README.md)
     * [如何管理需求](chapter3/3.1_如何管理需求.md)
     * [如何架构设计](chapter3/3.1_如何架构设计.md)
