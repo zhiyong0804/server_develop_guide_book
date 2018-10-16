@@ -33,6 +33,7 @@ email: lizhiyong4360@gmail.com
     * [编译原理](chapter8/8.1_编译原理.md)
     * [makefile](chapter8/8.2_makefile.md)
     * [cmake](chapter8/8.3_cmake.md)
+    * [GNU make](chapter8/8.4_GNU_make.md)
 * [调试技巧](chapter9/README.md)
     * [gdb调试](chapter9/9.1_gdb调试.md)
     * [coredump](chapter9/9.2_coredump.md)
