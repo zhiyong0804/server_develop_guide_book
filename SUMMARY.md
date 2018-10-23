@@ -39,4 +39,9 @@
     * [ini配置](chapter10/10.1_ini配置.md)
     * [xml配置](chapter10/10.2_xml配置.md)
     * [lua配置](chapter10/10.3_lua配置.md)
+* [项目日志](chapter11/README.md)
+    * [重定向](chapter11/11.1_重定向.md)
+    * [log4cpp](chapter11/11.2_log4cpp.md)
+    * [大型项目的日志架构](chapter11/11.3_大型项目的日志架构.md)
+* [进程](chapter12/README.md)
 
