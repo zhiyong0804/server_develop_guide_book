@@ -42,6 +42,6 @@
 * [项目日志](chapter11/README.md)
     * [重定向](chapter11/11.1_重定向.md)
     * [log4cpp](chapter11/11.2_log4cpp.md)
-    * [大型项目的日志架构](chapter11/11.3_大型项目的日志架构.md)
+    * [分布式系统的集中式日志解决方案](chapter11/11.3_大型项目的日志架构.md)
 * [进程](chapter12/README.md)
 
