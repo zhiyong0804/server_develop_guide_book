@@ -65,4 +65,7 @@
     * [UDP的实现](chapter16/16.2_UDP的实现.md)
     * [UDP的connect的意义](chapter16/16.3_UDP的connect的意义.md)
     * [UDP的分包和组包](chapter16/16.4_UDP的分包和组包)
-
+* [TCP长连接和短连接](chapter17/README.md)
+    * [什么是长连接和短连接](chapter17/17.1_什么是长连接和短连接.md)
+    * [keepalive机制](chapter17/17.2_keepalive机制.md)
+    * [如何正确维持一个长连接](chapter17/17.3_如何正确维持一个长连接.md)
