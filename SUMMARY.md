@@ -78,3 +78,8 @@
     * [http协议介绍](chapter19/19.1_http协议介绍.md)  
     * [http应用](chapter19/19.2_http应用.md)
     * [短信验证码](chapter19/19.3_短信验证码.md)
+* [应用层协议设计和序列号](chapter20/README.md)
+    * [应用层协议设计](chapter20/20.1_应用层协议设计.md)
+    * [json序列化](chapter20/20.2_json序列化.md)
+    * [protobuf序列化](chapter20/20.3_protobuf序列化.md)
+    * [flatbuffer序列化](chapter20/20.4_flatbuffer序列化.md)
